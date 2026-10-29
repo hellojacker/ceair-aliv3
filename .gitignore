@@ -1,0 +1,37 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ---- 虚拟环境 ----
+.venv/
+venv/
+env/
+
+# ---- 运行产物（每轮覆盖，不入库）----
+back.png
+shadow.png
+captcha_param.json
+captcha_success.json
+captcha_netlog.json
+session.json
+cookies.json
+puzzle_dom/
+puzzle/
+
+# ---- 本地会话 / 取证目录 ----
+artifacts/
+logs/
+chrome_profile/
+site/
+tools/
+.idea/
+.vscode/
+*.log
+
+# ---- 系统 ----
+Thumbs.db
+desktop.ini
+.DS_Store

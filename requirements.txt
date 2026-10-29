@@ -1,0 +1,23 @@
+# ceair 项目的虚拟环境依赖（Python 3.9，与已验证环境逐版本对齐）
+#
+#   .venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# 说明：
+#   iv8        —— C++ V8 + 浏览器环境运行时，滑块求解的唯一执行底座（无需 Node/浏览器）
+#   curl_cffi  —— 伪装 Chrome TLS/HTTP2 指纹，过网宿 WAF（裸 requests 会 403）
+#   numpy/pillow —— 缺口识别与图像处理
+#
+# pycryptodome 已改为**可选**：登录用的 RSA 改由 submit_requests.py 纯 Python 实现
+# （PKCS#1 v1.5 + base64，零依赖）。装上它只是为了让 tools/verify_login.py 做交叉验证：
+#   CEAIR_RSA_SELFTEST=1 .venv\Scripts\python.exe tools\verify_login.py
+# 之所以去掉强依赖：Crypto.PublicKey.RSA 会连带 import Crypto.Protocol.KDF，
+# pip 预编译出的 Crypto/Protocol/__pycache__/KDF.cpython-39.pyc 常被杀软按启发式误报。
+#
+iv8==0.1.4
+curl_cffi==0.13.0
+requests==2.28.2
+urllib3==1.26.11
+numpy==1.26.4
+pillow==10.3.0
+
+# 可选（仅交叉验证）：pycryptodome==4.0.0
